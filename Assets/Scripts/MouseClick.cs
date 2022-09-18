@@ -21,7 +21,8 @@ public class MouseClick : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
-        RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+
+        RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero , 0 , 7);
         if (hit.collider != null)
         {
             Debug.Log(hit.collider.gameObject.GetComponent<Slots>());

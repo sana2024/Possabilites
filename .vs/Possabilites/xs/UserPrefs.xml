@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="Assets/Scripts/Slots.cs" Line="51" Column="56" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="181" Column="49" />
-      <File FileName="Assets/Scripts/Piece.cs" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="216" Column="5" />
+      <File FileName="Assets/Scripts/Piece.cs" Line="9" Column="5" />
       <File FileName="Assets/Scripts/MouseClick.cs" />
     </Files>
     <Pads>

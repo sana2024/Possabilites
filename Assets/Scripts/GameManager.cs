@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+ 
 public class GameManager : MonoBehaviour
 {
     //--------- dices ---------
@@ -11,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public int BigDice = 0;
     public int SmallDice = 0;
-
+    
 
     [SerializeField] private GameObject[] pieces = new GameObject[2];
     [SerializeField] private Slots[] slots = new Slots[26];
@@ -34,17 +35,23 @@ public class GameManager : MonoBehaviour
     public int[] moves = new int[4];
 
     int MoveCounter = 0;
-    int ClickTimer = 0;
+    float ClickTimer = 0;
     bool MouseDown = false;
+
+
+    Slots BiggerSlot;
+    Slots SmallerSlot;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+    
         if (Player == "white")
         {
             enemy = "black";
+            
 
         }
         else
@@ -97,51 +104,61 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
             MouseDown = true;
-            ClickTimer++;
+            Debug.Log(GetSlot());
 
-             Debug.Log("pressed");
-
+            
             if (GetSlot().SlotColor == Player)
             {
+ 
+
+
                 MoveCounter++;
-                Debug.Log(MoveCounter);
+ 
                 if (BigMoved == false)
                 {
 
                     int bigMove = PlayerMovement(GetSlot().SlotNum, BigDice);
 
-                    if (slots[bigMove - 1].SlotColor == enemy)
-                    {
-                        Debug.Log("not valid move");
-                    }
-                    else
+                      if(bigMove-1 >= 0)
                     {
 
 
-                        var last = GetSlot().pieces.LastOrDefault();
 
-                        slots[bigMove - 1].addPiece(last);
-                        GetSlot().RemovePiece();
-
-
-                        if (diceValue1 != diceValue2)
+                        if (slots[bigMove-1].SlotColor == enemy)
                         {
-
-                            BigMoved = true;
+                            Debug.Log("not valid move");
                         }
                         else
                         {
-                            smallMoved = true;
-                            if (MoveCounter == 4)
+
+
+                            var last = GetSlot().pieces.LastOrDefault();
+
+                            slots[bigMove - 1].addPiece(last);
+                            GetSlot().RemovePiece();
+
+                            BiggerSlot = slots[bigMove - 1];
+
+
+                            if (diceValue1 != diceValue2)
                             {
+
                                 BigMoved = true;
                             }
+                            else
+                            {
+                                smallMoved = true;
+                                if (MoveCounter == 4)
+                                {
+                                    BigMoved = true;
+                                }
+                            }
+
                         }
-
-
                     }
 
                 }
@@ -161,6 +178,7 @@ public class GameManager : MonoBehaviour
                         var last = GetSlot().pieces.LastOrDefault();
                         slots[SmallMove - 1].addPiece(last);
                         GetSlot().RemovePiece();
+                        SmallerSlot = slots[SmallMove - 1];
                         smallMoved = true;
                     }
                 }
@@ -171,14 +189,31 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            Debug.Log("released");
+ 
             MouseDown = false;
-            ClickTimer = 0;
+ 
         }
 
 
+        if (MouseDown == true)
+        {
+             ClickTimer += Time.deltaTime;
 
-    }
+              if(ClickTimer > 0.5)
+            {
+               if (GetSlot().SlotColor == Player)
+              {
+                Possab(GetSlot());
+
+
+               }
+            }
+
+
+        } 
+
+        }
+    
 
 
     public int PlayerMovement(int SlotNum, int Dice)
@@ -193,6 +228,43 @@ public class GameManager : MonoBehaviour
         }
 
         return 0;
+
+    }
+
+    public void Possab(Slots ClickedSlot)
+    {
+        var BigDicePosb = ClickedSlot.SlotNum - BigDice ;
+        var smallDicePosb = ClickedSlot.SlotNum - SmallDice;
+
+         if(BigDicePosb - 1 >= 0)
+        {
+
+         Slots BigSlot = slots[BigDicePosb];
+         Slots SmallSlot = slots[smallDicePosb];
+
+
+            if(BigSlot.SlotColor != enemy)
+            {
+               SpriteRenderer BigSprite = BigSlot.GetComponentInChildren<SpriteRenderer>();
+               Debug.Log(BigSlot);
+               BigSprite.color = new Color(BigSprite.color.r, BigSprite.color.g, BigSprite.color.b, 1f);
+
+            }
+
+
+            if(SmallSlot.SlotColor != enemy)
+            {
+               SpriteRenderer smallSprite = SmallSlot.GetComponentInChildren<SpriteRenderer>();
+               Debug.Log(SmallSlot);
+               smallSprite.color = new Color(smallSprite.color.r, smallSprite.color.g, smallSprite.color.b, 1f);
+            }
+ 
+
+
+        }
+
+
+ 
 
     }
 
