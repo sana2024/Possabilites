@@ -1,8 +1,8 @@
-﻿<Properties StartupConfiguration="{F65F6D18-6EAD-5A29-C096-BAE231FA643B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
+﻿<Properties GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="Assets/Scripts/Slots.cs" Line="51" Column="56" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="173" Column="28" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="181" Column="49" />
       <File FileName="Assets/Scripts/Piece.cs" />
       <File FileName="Assets/Scripts/MouseClick.cs" />
     </Files>
@@ -10,8 +10,12 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Possabilites" expanded="True">
-            <Node name="Assets" expanded="True" selected="True">
-              <Node name="Scripts" expanded="True" />
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="Assets" expanded="True">
+                <Node name="Scripts" expanded="True">
+                  <Node name="GameManager.cs" selected="True" />
+                </Node>
+              </Node>
             </Node>
           </Node>
         </State>
