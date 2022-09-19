@@ -4,29 +4,52 @@ using UnityEngine;
 
 public class MouseClick : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
- 
-    }
-
+    float temps;
+    bool click = false;
     // Update is called once per frame
     void Update()
     {
- 
+        if (Input.GetMouseButtonDown(0))
+        {
+            temps = Time.time;
+            click = true;
+        }
+
+        if (click == true)
+        {
+
+            if ((Time.time - temps) > 0.2)
+            {
+                this.transform.position = GetObject();
+            }
+
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            click = false;
+
+            if ((Time.time - temps) < 0.2)
+            {
+                this.transform.position = new Vector3(4.5f, 0, 0);
+            }
+        }
+
     }
 
-   public void GetObject()
+   public Vector2 GetObject()
     {
+ 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
 
-        RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero , 0 , 7);
-        if (hit.collider != null)
-        {
-            Debug.Log(hit.collider.gameObject.GetComponent<Slots>());
-        }
+        //RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+    
+        return mousePos2D;
+    
+  
+
     }
         
 }

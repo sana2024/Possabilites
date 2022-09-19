@@ -6,7 +6,12 @@ using UnityEngine;
 public class Piece : MonoBehaviour
 {
     [SerializeField] public string PieceType;
-  //  bool PieceClicked = false;
+    [SerializeField] int id;
+     bool PieceClicked = false;
+
+
+    float temps;
+    bool click = false;
 
 
     // Start is called before the first frame update
@@ -19,25 +24,34 @@ public class Piece : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
+
         if (Input.GetMouseButtonDown(0))
         {
-            PieceClicked = true;
+            temps = Time.time;
+            click = true;
+        }
+
+        if (click == true)
+        {
+
+            if ((Time.time - temps) > 0.2)
+            {
+                PieceDrag(); 
+            }
+
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            PieceClicked = false;
+            click = false;
+
+            if ((Time.time - temps) < 0.2)
+            {
+                 
+            }
         }
 
-        if(PieceClicked == true)
-        {
-           // RaycastHit2D hit = Physics2D.Raycast(GetMousePos(), Vector2.zero);
-          //  Debug.Log(hit.collider.name);
-           // this.transform.position = GetMousePos();
-        }
 
-        */
     }
 
     public void move(Vector3 newPos)
@@ -45,7 +59,7 @@ public class Piece : MonoBehaviour
         transform.position = newPos;
     }
 
-    /*
+    
     private Vector3 GetMousePos()
     {
         Vector3 mousePos = Input.mousePosition;
@@ -55,5 +69,17 @@ public class Piece : MonoBehaviour
 
         return worldPos;
     }
-    */
+
+    public void PieceDrag()
+    {
+        LayerMask mask = LayerMask.GetMask("piece");
+        RaycastHit2D hit = Physics2D.Raycast(GetMousePos(), Vector2.zero, mask);
+        Debug.Log(hit.collider.name);
+
+        if (this.name == hit.collider.name)
+        {
+            this.transform.position = GetMousePos();
+        }
+    }
+    
 }

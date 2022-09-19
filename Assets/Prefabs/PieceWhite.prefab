@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3829730449144713881}
   - component: {fileID: 5401493310033878351}
   - component: {fileID: 861314956971088606}
-  m_Layer: 0
+  - component: {fileID: 8537629049899765733}
+  m_Layer: 7
   m_Name: PieceWhite
-  m_TagString: Untagged
+  m_TagString: Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,3 +97,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PieceType: white
+  id: 0
+--- !u!58 &8537629049899765733
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8604247624722714661}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
