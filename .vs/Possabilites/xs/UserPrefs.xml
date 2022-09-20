@@ -1,10 +1,10 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Assets/Scripts/GameManager.cs" Line="301" Column="1" />
-      <File FileName="Assets/Scripts/Slots.cs" Line="10" Column="10" />
-      <File FileName="Assets/Scripts/Piece.cs" Line="30" Column="31" />
-      <File FileName="Assets/Scripts/MouseClick.cs" Line="36" Column="10" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="430" Column="1" />
+      <File FileName="Assets/Scripts/Piece.cs" />
+      <File FileName="Assets/Scripts/MouseClick.cs" />
+      <File FileName="Assets/Scripts/Slots.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,7 +13,7 @@
             <Node name="Assembly-CSharp" expanded="True">
               <Node name="Assets" expanded="True">
                 <Node name="Scripts" expanded="True">
-                  <Node name="Piece.cs" selected="True" />
+                  <Node name="GameManager.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
