@@ -154,8 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 2
-  up: 1
   SlotColor: 
+  up: 1
   pieces: []
 --- !u!61 &17088342
 BoxCollider2D:
@@ -229,8 +229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 17
-  up: -1
   SlotColor: 
+  up: -1
   pieces: []
 --- !u!61 &131520989
 BoxCollider2D:
@@ -304,8 +304,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 20
-  up: -1
   SlotColor: 
+  up: -1
   pieces: []
 --- !u!61 &148865101
 BoxCollider2D:
@@ -461,8 +461,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 12
-  up: 1
   SlotColor: 
+  up: 1
   pieces: []
 --- !u!61 &228124635
 BoxCollider2D:
@@ -536,8 +536,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 5
-  up: 1
   SlotColor: 
+  up: 1
   pieces: []
 --- !u!61 &283197133
 BoxCollider2D:
@@ -693,8 +693,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 23
-  up: -1
   SlotColor: 
+  up: -1
   pieces: []
 --- !u!61 &376159265
 BoxCollider2D:
@@ -809,8 +809,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 1
-  up: 1
   SlotColor: 
+  up: 1
   pieces: []
 --- !u!1 &452934917
 GameObject:
@@ -1007,8 +1007,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 18
-  up: -1
   SlotColor: 
+  up: -1
   pieces: []
 --- !u!61 &510629867
 BoxCollider2D:
@@ -1165,8 +1165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 13
-  up: -1
   SlotColor: 
+  up: -1
   pieces: []
 --- !u!61 &546394658
 BoxCollider2D:
@@ -1240,8 +1240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 7
-  up: 1
   SlotColor: 
+  up: 1
   pieces: []
 --- !u!61 &553138750
 BoxCollider2D:
@@ -1313,8 +1313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e330754bf82424b6cbab12d63031823e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceValue1: 2
-  diceValue2: 4
+  diceValue1: 4
+  diceValue2: 2
   BigDice: 0
   SmallDice: 0
   pieces:
@@ -1347,10 +1347,6 @@ MonoBehaviour:
   - {fileID: 851207648}
   - {fileID: 856282721}
   - {fileID: 709238413}
-  mouseClick: {fileID: 0}
-  BigMoved: 0
-  smallMoved: 0
-  Player: white
   SlotColors:
   - 
   - 
@@ -1376,8 +1372,6 @@ MonoBehaviour:
   - 
   - 
   - 
-  MovableSlots: 00000000000000000000000000000000
-  moves: 00000000000000000000000000000000
   PieceObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -1403,6 +1397,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Player: black
+  enemy: 
 --- !u!4 &557691908
 Transform:
   m_ObjectHideFlags: 0
@@ -1530,8 +1526,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 22
-  up: -1
   SlotColor: 
+  up: -1
   pieces: []
 --- !u!61 &704873225
 BoxCollider2D:
@@ -1620,8 +1616,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 26
-  up: 0
   SlotColor: 
+  up: 0
   pieces: []
 --- !u!61 &709238414
 BoxCollider2D:
@@ -1680,8 +1676,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 15
-  up: -1
   SlotColor: 
+  up: -1
   pieces: []
 --- !u!61 &729098372
 BoxCollider2D:
@@ -2001,8 +1997,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 24
-  up: -1
   SlotColor: 
+  up: -1
   pieces: []
 --- !u!61 &851207649
 BoxCollider2D:
@@ -2091,8 +2087,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 25
-  up: 0
   SlotColor: 
+  up: 0
   pieces: []
 --- !u!61 &856282722
 BoxCollider2D:
@@ -2151,8 +2147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 16
-  up: -1
   SlotColor: 
+  up: -1
   pieces: []
 --- !u!61 &998632734
 BoxCollider2D:
@@ -2441,8 +2437,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 21
-  up: -1
   SlotColor: 
+  up: -1
   pieces: []
 --- !u!61 &1104420167
 BoxCollider2D:
@@ -2736,8 +2732,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 6
-  up: 1
   SlotColor: 
+  up: 1
   pieces: []
 --- !u!61 &1160071957
 BoxCollider2D:
@@ -2811,8 +2807,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 19
-  up: -1
   SlotColor: 
+  up: -1
   pieces: []
 --- !u!61 &1168286530
 BoxCollider2D:
@@ -3132,8 +3128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 8
-  up: 1
   SlotColor: 
+  up: 1
   pieces: []
 --- !u!61 &1351163599
 BoxCollider2D:
@@ -3535,8 +3531,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 14
-  up: -1
   SlotColor: 
+  up: -1
   pieces: []
 --- !u!61 &1502978775
 BoxCollider2D:
@@ -3610,8 +3606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 11
-  up: 1
   SlotColor: 
+  up: 1
   pieces: []
 --- !u!61 &1517186442
 BoxCollider2D:
@@ -3767,8 +3763,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 10
-  up: 1
   SlotColor: 
+  up: 1
   pieces: []
 --- !u!61 &1605989484
 BoxCollider2D:
@@ -4006,8 +4002,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 3
-  up: 1
   SlotColor: 
+  up: 1
   pieces: []
 --- !u!61 &1739769863
 BoxCollider2D:
@@ -4409,8 +4405,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 4
-  up: 1
   SlotColor: 
+  up: 1
   pieces: []
 --- !u!61 &2001891049
 BoxCollider2D:
@@ -4566,8 +4562,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 9
-  up: 1
   SlotColor: 
+  up: 1
   pieces: []
 --- !u!61 &2115097786
 BoxCollider2D:

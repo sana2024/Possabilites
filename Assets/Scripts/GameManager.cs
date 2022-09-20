@@ -196,8 +196,8 @@ public class GameManager : MonoBehaviour
     public void Movements(Slots ClickedSlot)
     {
         //check if big dice or white dice is playable on clicked slot
-        var BigDicePosb = ClickedSlot.SlotNum - BigDice;
-        var smallDicePosb = ClickedSlot.SlotNum - SmallDice;
+        var BigDicePosb = MovementDirection(ClickedSlot.SlotNum, BigDice);
+        var smallDicePosb = MovementDirection(ClickedSlot.SlotNum, SmallDice);
 
         if (BigDicePosb - 1 >= 0)
         {
@@ -231,8 +231,8 @@ public class GameManager : MonoBehaviour
     // show player possablities to drag pieces to
     public void Possab(Slots ClickedSlot)
     {
-        var BigDicePosb = ClickedSlot.SlotNum - BigDice;
-        var smallDicePosb = ClickedSlot.SlotNum - SmallDice;
+        var BigDicePosb = MovementDirection(ClickedSlot.SlotNum , BigDice);
+        var smallDicePosb =MovementDirection(ClickedSlot.SlotNum, SmallDice);
 
         if (BigDicePosb - 1 >= 0)
         {
@@ -241,7 +241,7 @@ public class GameManager : MonoBehaviour
             Slots SmallSlot = slots[smallDicePosb - 1];
 
 
-            if (BigSlot.SlotColor != enemy || (BigSlot.SlotColor == enemy && BigSlot.pieces.Count == 1))
+            if (BigSlot.SlotColor != enemy && BigPlayed == false || (BigSlot.SlotColor == enemy && BigSlot.pieces.Count == 1))
             {
                 SpriteRenderer BigSprite = BigSlot.GetComponentInChildren<SpriteRenderer>();
                 Debug.Log(BigSlot);
@@ -251,7 +251,7 @@ public class GameManager : MonoBehaviour
             }
 
 
-            if (SmallSlot.SlotColor != enemy || (SmallSlot.SlotColor == enemy && SmallSlot.pieces.Count == 1))
+            if (SmallSlot.SlotColor != enemy && SmallPlayed == false || (SmallSlot.SlotColor == enemy && SmallSlot.pieces.Count == 1))
             {
                 SpriteRenderer smallSprite = SmallSlot.GetComponentInChildren<SpriteRenderer>();
                 Debug.Log(SmallSlot);
