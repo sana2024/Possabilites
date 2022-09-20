@@ -1313,8 +1313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e330754bf82424b6cbab12d63031823e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceValue1: 5
-  diceValue2: 5
+  diceValue1: 2
+  diceValue2: 4
   BigDice: 0
   SmallDice: 0
   pieces:
@@ -1347,7 +1347,7 @@ MonoBehaviour:
   - {fileID: 851207648}
   - {fileID: 856282721}
   - {fileID: 709238413}
-  mouseClick: {fileID: 1102048554}
+  mouseClick: {fileID: 0}
   BigMoved: 0
   smallMoved: 0
   Player: white
@@ -1620,7 +1620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 26
-  up: -1
+  up: 0
   SlotColor: 
   pieces: []
 --- !u!61 &709238414
@@ -2091,7 +2091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotNum: 25
-  up: -1
+  up: 0
   SlotColor: 
   pieces: []
 --- !u!61 &856282722
@@ -2388,6 +2388,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30b788d566d743cdbb3b7312b9846eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smoothTime: 0.3
+  ShortClicked: 0
+  animationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1102048555
 Transform:
   m_ObjectHideFlags: 0

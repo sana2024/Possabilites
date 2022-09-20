@@ -152,7 +152,7 @@ public class GameManager : MonoBehaviour
             {
                 if (GetSlot().SlotColor == Player)
                 {
- 
+                    Possab(GetSlot());
 
                 }
             }
@@ -161,12 +161,12 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            resetPossab();
             click = false;
 
             if ((Time.time - temps) < 0.2)
             {
-                // MoveClick();
-                Possab(GetSlot());
+                Movements(GetSlot());
                 MovePiecesWithClick();
             }
         }
@@ -194,171 +194,83 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void Possab(Slots ClickedSlot )
+    public void Movements(Slots ClickedSlot)
     {
-        var BigDicePosb = ClickedSlot.SlotNum - BigDice ;
+        var BigDicePosb = ClickedSlot.SlotNum - BigDice;
         var smallDicePosb = ClickedSlot.SlotNum - SmallDice;
 
-         if(BigDicePosb - 1 >= 0)
+        if (BigDicePosb - 1 >= 0)
         {
 
-         Slots BigSlot = slots[BigDicePosb -1 ];
-         Slots SmallSlot = slots[smallDicePosb -1 ];
+            Slots BigSlot = slots[BigDicePosb - 1];
+            Slots SmallSlot = slots[smallDicePosb - 1];
 
 
-            if(BigSlot.SlotColor != enemy || (BigSlot.SlotColor == enemy && BigSlot.pieces.Count ==1))
+            if (BigSlot.SlotColor != enemy || (BigSlot.SlotColor == enemy && BigSlot.pieces.Count == 1))
             {
-               SpriteRenderer BigSprite = BigSlot.GetComponentInChildren<SpriteRenderer>();
-               Debug.Log(BigSlot);
-               BigSprite.color = new Color(BigSprite.color.r, BigSprite.color.g, BigSprite.color.b, 0.5f);
+ 
                 canPlayBig = true;
-              
+
             }
 
 
-            if(SmallSlot.SlotColor != enemy || (SmallSlot.SlotColor == enemy && SmallSlot.pieces.Count == 1))
+            if (SmallSlot.SlotColor != enemy || (SmallSlot.SlotColor == enemy && SmallSlot.pieces.Count == 1))
             {
-               SpriteRenderer smallSprite = SmallSlot.GetComponentInChildren<SpriteRenderer>();
-               Debug.Log(SmallSlot);
-               smallSprite.color = new Color(smallSprite.color.r, smallSprite.color.g, smallSprite.color.b, 0.5f);
+ 
                 canPlaySmall = true;
-                
+
             }
 
 
         }
-
-
- 
 
     }
 
-    public void MoveClick()
+    public void Possab(Slots ClickedSlot)
     {
-        if (GetSlot().SlotColor == Player)
+        var BigDicePosb = ClickedSlot.SlotNum - BigDice;
+        var smallDicePosb = ClickedSlot.SlotNum - SmallDice;
+
+        if (BigDicePosb - 1 >= 0)
         {
 
+            Slots BigSlot = slots[BigDicePosb - 1];
+            Slots SmallSlot = slots[smallDicePosb - 1];
 
 
-            MoveCounter++;
-
-            if (BigMoved == false)
+            if (BigSlot.SlotColor != enemy || (BigSlot.SlotColor == enemy && BigSlot.pieces.Count == 1))
             {
+                SpriteRenderer BigSprite = BigSlot.GetComponentInChildren<SpriteRenderer>();
+                Debug.Log(BigSlot);
+                BigSprite.color = new Color(BigSprite.color.r, BigSprite.color.g, BigSprite.color.b, 0.5f);
+                canPlayBig = true;
 
-                int bigMove = PlayerMovement(GetSlot().SlotNum, BigDice);
-
-                if (bigMove - 1 >= 0)
-                {
-
-
-
-                    if (slots[bigMove - 1].SlotColor == enemy && slots[bigMove - 1].pieces.Count > 1)
-                    {
-                        Debug.Log("not valid move");
-                    }
-                    else
-                    {
-
-                        if (slots[bigMove - 1].pieces.Count == 1 && slots[bigMove - 1].pieces.First().PieceType != Player)
-                        {
-                            var hittedPiece = slots[bigMove - 1].pieces.First();
-
-                            slots[bigMove - 1].pieces.Remove(hittedPiece);
-
-                            Debug.Log(hittedPiece.PieceType);
-
-                            if (hittedPiece.PieceType == "black")
-                            {
-                                slots[24].addPiece(hittedPiece);
-                            }
-
-                            if (hittedPiece.PieceType == "white")
-                            {
-                                slots[25].addPiece(hittedPiece);
-                            }
-
-
-                        }
-
-
-                            var last = GetSlot().pieces.LastOrDefault();
-
-                            slots[bigMove - 1].addPiece(last);
-                            GetSlot().RemovePiece();
-
-                            BiggerSlot = slots[bigMove - 1];
-
-
-                            if (diceValue1 != diceValue2)
-                            {
-
-                                BigMoved = true;
-                            }
-                            else
-                            {
-                                smallMoved = true;
-                                if (MoveCounter == 4)
-                                {
-                                    BigMoved = true;
-                                }
-                            }
-
-                        }
-                    }
-
-                }
-                if (MoveCounter >= 2 && smallMoved == false && BigMoved == true)
-                {
-
-
-                    int SmallMove = PlayerMovement(GetSlot().SlotNum, SmallDice);
-                    if (slots[SmallMove - 1].SlotColor == enemy && slots[SmallMove - 1].pieces.Count > 1)
-                    {
-                        Debug.Log("not valid move");
-                    }
-                    else
-                    {
-
-                        if (slots[SmallMove - 1].pieces.Count == 1 && slots[SmallMove - 1].pieces.First().PieceType != Player)
-                        {
-                            var hittedPiece = slots[SmallMove - 1].pieces.First();
-
-                            slots[SmallMove - 1].pieces.Remove(hittedPiece);
-
-                            Debug.Log(hittedPiece.PieceType);
-
-                            if (hittedPiece.PieceType == "black")
-                            {
-                                slots[24].addPiece(hittedPiece);
-                            }
-
-                            if (hittedPiece.PieceType == "white")
-                            {
-                                slots[25].addPiece(hittedPiece);
-                            }
-
-
-                        }
-
-
-
-                        var last = GetSlot().pieces.LastOrDefault();
-                        slots[SmallMove - 1].addPiece(last);
-                        GetSlot().RemovePiece();
-                        SmallerSlot = slots[SmallMove - 1];
-                        smallMoved = true;
-
-
-
-                    }
-                }
             }
 
 
+            if (SmallSlot.SlotColor != enemy || (SmallSlot.SlotColor == enemy && SmallSlot.pieces.Count == 1))
+            {
+                SpriteRenderer smallSprite = SmallSlot.GetComponentInChildren<SpriteRenderer>();
+                Debug.Log(SmallSlot);
+                smallSprite.color = new Color(smallSprite.color.r, smallSprite.color.g, smallSprite.color.b, 0.5f);
+                canPlaySmall = true;
+
+            }
 
 
         }
 
+    }
+
+    public void resetPossab()
+    {
+        for(int i= 0; i< 24; i++)
+        {
+            SpriteRenderer SlotSprite = slots[i].GetComponentInChildren<SpriteRenderer>();
+            SlotSprite.color = new Color(SlotSprite.color.r, SlotSprite.color.g, SlotSprite.color.b, 0);
+        }
+    }
+        
     public void MovePiecesWithClick()
     {
  
