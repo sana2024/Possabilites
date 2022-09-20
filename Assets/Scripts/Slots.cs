@@ -5,12 +5,15 @@ using System.Linq;
 
 public class Slots : MonoBehaviour
 {
+    //slot properties
     public int SlotNum;
-    float distance = 0.68f;
-    public int up;
-
     public string SlotColor = "";
 
+    // the distance between pieces in a slot when insantiated
+    float distance = 0.68f;
+
+    //checks whatever the piece is on tiop side of board or botton side
+    public int up;
 
     [SerializeField] public List<Piece> pieces = new List<Piece>();
 
@@ -23,6 +26,7 @@ public class Slots : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // gives the slot a color based on pices color in it
         foreach (var piece in pieces)
         {
             if (piece.PieceType == "white")
@@ -38,6 +42,7 @@ public class Slots : MonoBehaviour
         
     }
 
+    // removes pieces from slot
     public void RemovePiece()
     {
       var last = pieces.Last();
@@ -46,6 +51,7 @@ public class Slots : MonoBehaviour
         
     }
 
+    // adds pieces to the slot
     public void addPiece(Piece piece)
     {
         double add = -(0.1 * this.howManyPieces() + 1);

@@ -6,10 +6,7 @@ using UnityEngine;
 public class Piece : MonoBehaviour
 {
     [SerializeField] public string PieceType;
-    [SerializeField] int id;
-     bool PieceClicked = false;
-
-
+ 
     float temps;
     bool click = false;
 
@@ -25,6 +22,7 @@ public class Piece : MonoBehaviour
     void Update()
     {
 
+        //checks whatever player is performing long prees on the mouse to drag the piece
         if (Input.GetMouseButtonDown(0))
         {
             temps = Time.time;
@@ -54,12 +52,13 @@ public class Piece : MonoBehaviour
 
     }
 
+    // move piece to the destination
     public void move(Vector3 newPos)
     {
         transform.position = newPos;
     }
 
-    
+    // gets postion of the mouse on the screen when mouse dragged 
     private Vector3 GetMousePos()
     {
         Vector3 mousePos = Input.mousePosition;
@@ -70,6 +69,7 @@ public class Piece : MonoBehaviour
         return worldPos;
     }
 
+    // dragds the piece to the mouse postion on hold
     public void PieceDrag()
     {
         LayerMask mask = LayerMask.GetMask("piece");

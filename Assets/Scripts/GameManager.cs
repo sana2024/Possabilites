@@ -6,46 +6,40 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
-    //--------- dices ---------
+    //------------------------
+    //        Dices
+    //------------------------
     public int diceValue1 = 5;
     public int diceValue2 = 6;
 
     public int BigDice = 0;
     public int SmallDice = 0;
 
-
+    //------------------------
+    //   Arrays And Slots
+    //------------------------
     [SerializeField] private GameObject[] pieces = new GameObject[2];
     [SerializeField] private Slots[] slots = new Slots[26];
+    [SerializeField] string[] SlotColors = new string[24];
+    [SerializeField] GameObject[] PieceObjects = new GameObject[24];
 
-    [SerializeField] MouseClick mouseClick;
-    [SerializeField] bool BigMoved = false;
-    [SerializeField] bool smallMoved = false;
-
-    // ----- players-----
-    [SerializeField] string Player = "black";
-    string enemy = "";
-
-    //-------- Slots a nd Postions -------------
+    //------------------------
+    //    Start Postions
+    //------------------------
     private int[] startPositions = { 2, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 5, 5, 0, 0, 0, 3, 0, 1, 0, 0, 0, 0, 2 };
     private int[] startColors = { 0, -1, -1, -1, -1, 1, -1, 1, -1, -1, -1, 0, 1, -1, -1, -1, 0, -1, 0, -1, -1, -1, -1, 1 };
 
-    public string[] SlotColors = new string[24];
-    public int[] MovableSlots = new int[4];
 
-    public int[] moves = new int[4];
+    //------------------------
+    //      Players
+    //------------------------
+    [SerializeField] string Player = "black";
+    [SerializeField] string enemy = "";
 
-    int MoveCounter = 0;
-    float ClickTimer = 0;
-    bool MouseDown = false;
-
-
-    Slots BiggerSlot;
-    Slots SmallerSlot;
-
-    Piece piece;
-
-    [SerializeField]  GameObject[] PieceObjects = new GameObject[24];
-
+ 
+    //------------------------
+    //     Conditions
+    //------------------------
     float temps;
     bool click = false;
 
@@ -55,22 +49,24 @@ public class GameManager : MonoBehaviour
     bool BigPlayed = false;
     bool SmallPlayed = false;
 
- 
+
+    //------------------------
+    //     Others
+    //------------------------
+
+    int MoveCounter = 0;
+    Piece piece;
 
 
- 
-      
 
     // Start is called before the first frame update
     void Start()
     {
          
-
+        // check which color is the current player
         if (Player == "white")
         {
             enemy = "black";
-            
-
         }
         else
         {
@@ -78,7 +74,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-
+        // check which dice is bigger and playing first
         if (diceValue1 > diceValue2)
         {
             BigDice = diceValue1;
@@ -94,11 +90,10 @@ public class GameManager : MonoBehaviour
 
 
 
-
+        // insantiate 15 white pieces and 15 black pieces
         for (int i = 0; i < 24; i++)
         {
             
-
             for (int j = 0; j < startPositions[i]; j++)
             {
                 piece = Instantiate(pieces[startColors[i]], new Vector3(0, 0, 0), Quaternion.identity).GetComponent<Piece>();
@@ -110,7 +105,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        
+        // give each insantiated piece a name
         PieceObjects = GameObject.FindGameObjectsWithTag("Piece");
 
         for(int i = 0; i< PieceObjects.Length; i++)
@@ -124,6 +119,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // get the slot based on mouse postion click
     public Slots GetSlot()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -139,6 +135,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
+        //check if player performed a single short click or a long press
+
         if (Input.GetMouseButtonDown(0))
         {
             temps = Time.time;
@@ -147,7 +145,7 @@ public class GameManager : MonoBehaviour
 
         if (click == true)
         {
-
+            // get possable moves if slot pressed
             if ((Time.time - temps) > 0.2)
             {
                 if (GetSlot().SlotColor == Player)
@@ -158,7 +156,7 @@ public class GameManager : MonoBehaviour
             }
 
         }
-
+          // place piece on disired slot when slot clicked
         if (Input.GetMouseButtonUp(0))
         {
             resetPossab();
@@ -178,8 +176,8 @@ public class GameManager : MonoBehaviour
     }
     
 
-
-    public int PlayerMovement(int SlotNum, int Dice)
+    // reverse movement direction based on player color
+    public int MovementDirection(int SlotNum, int Dice)
     {
         if (Player == "white")
         {
@@ -194,8 +192,10 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // Positions that player can move pieces to if clicked
     public void Movements(Slots ClickedSlot)
     {
+        //check if big dice or white dice is playable on clicked slot
         var BigDicePosb = ClickedSlot.SlotNum - BigDice;
         var smallDicePosb = ClickedSlot.SlotNum - SmallDice;
 
@@ -206,6 +206,7 @@ public class GameManager : MonoBehaviour
             Slots SmallSlot = slots[smallDicePosb - 1];
 
 
+            //check if player can move Big dice on this slot
             if (BigSlot.SlotColor != enemy || (BigSlot.SlotColor == enemy && BigSlot.pieces.Count == 1))
             {
  
@@ -213,7 +214,7 @@ public class GameManager : MonoBehaviour
 
             }
 
-
+            // check if player can move small dice on this slot
             if (SmallSlot.SlotColor != enemy || (SmallSlot.SlotColor == enemy && SmallSlot.pieces.Count == 1))
             {
  
@@ -226,6 +227,8 @@ public class GameManager : MonoBehaviour
 
     }
 
+
+    // show player possablities to drag pieces to
     public void Possab(Slots ClickedSlot)
     {
         var BigDicePosb = ClickedSlot.SlotNum - BigDice;
@@ -262,6 +265,8 @@ public class GameManager : MonoBehaviour
 
     }
 
+
+    // reset possabiliy color if player released mouse click
     public void resetPossab()
     {
         for(int i= 0; i< 24; i++)
@@ -270,22 +275,26 @@ public class GameManager : MonoBehaviour
             SlotSprite.color = new Color(SlotSprite.color.r, SlotSprite.color.g, SlotSprite.color.b, 0);
         }
     }
-        
+
+    // perform move action on the pice
     public void MovePiecesWithClick()
     {
- 
+
+         // this coondition will be true if slot can be played on both small and big dice
         if (canPlayBig == true && canPlaySmall == true )
         {
              MoveCounter++;
+            //first move big dice
             if (BigPlayed == false)
             {
-                int bigMove = PlayerMovement(GetSlot().SlotNum, BigDice);
+                int bigMove = MovementDirection(GetSlot().SlotNum, BigDice);
                 var last = GetSlot().pieces.LastOrDefault();
 
                 HitMovement(slots[bigMove - 1]);
                 slots[bigMove - 1].addPiece(last);
                 GetSlot().RemovePiece();
 
+                // check if its double dice
                 if (BigDice == SmallDice)
                 {
                     if (MoveCounter >= 4)
@@ -304,10 +313,10 @@ public class GameManager : MonoBehaviour
 
 
             }
-
+            //then move small dice after big dice
             if (SmallPlayed == false && BigPlayed == true && MoveCounter == 2)
             {
-                int smallMove = PlayerMovement(GetSlot().SlotNum, SmallDice);
+                int smallMove = MovementDirection(GetSlot().SlotNum, SmallDice);
                 var last = GetSlot().pieces.LastOrDefault();
                 HitMovement(slots[smallMove - 1]);
                 slots[smallMove - 1].addPiece(last);
@@ -322,11 +331,12 @@ public class GameManager : MonoBehaviour
 
         }
 
+        //this codtion will be true if the slot can only be played on big dice
         if (canPlayBig == true && canPlaySmall == false)
         {
             if(BigPlayed == false)
             {
-            int bigMove = PlayerMovement(GetSlot().SlotNum, BigDice);
+            int bigMove = MovementDirection(GetSlot().SlotNum, BigDice);
             var last = GetSlot().pieces.LastOrDefault();
 
             HitMovement(slots[bigMove - 1]);
@@ -340,11 +350,12 @@ public class GameManager : MonoBehaviour
 
         }
 
+        // this condtion will be true if slot can only be played on small dice
         if (canPlayBig == false && canPlaySmall == true)
         {
             if(SmallPlayed == false)
             {
-            int smallMove = PlayerMovement(GetSlot().SlotNum,SmallDice);
+            int smallMove = MovementDirection(GetSlot().SlotNum,SmallDice);
             var last = GetSlot().pieces.LastOrDefault();
             HitMovement(slots[smallMove - 1]);
             slots[smallMove - 1].addPiece(last);
@@ -358,6 +369,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    //checks if the slot that contains enemy pieces has only one piece in it
+    //moves enemy piece to bar
     public void HitMovement(Slots destination)
     {
         if (destination.pieces.Count == 1 && destination.pieces.First().PieceType != Player)
