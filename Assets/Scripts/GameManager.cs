@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Slots[] slots = new Slots[26];
     [SerializeField] string[] SlotColors = new string[24];
     [SerializeField] GameObject[] PieceObjects = new GameObject[24];
+    [SerializeField] int WhitePiecesInHome;
+    [SerializeField] int BlackPiecesInHome;
 
     //------------------------
     //    Start Postions
@@ -170,9 +172,62 @@ public class GameManager : MonoBehaviour
         }
 
 
+        CheckHomePieces();
 
+
+    }
+
+    public void CheckHomePieces()
+    {
+        int WhiteInHomeCounter = 0;
+        int BlackInHomeCounter = 0;
+
+        for(int i =0; i<24; i++)
+        {
+            if(slots[i].SlotNum >=1 && slots[i].SlotNum <= 6)
+            {
  
+                    foreach(var pieces in slots[i].pieces)
+                    {
+                        if(pieces.PieceType == "white")
+                    {
+                            WhiteInHomeCounter ++;
+                           if(WhiteInHomeCounter == 15)
+                        {
+                            Debug.Log("all white pieces are home");
+                        }
+                        else
+                        {
+                            Debug.Log("Not All white Pieces are home");
+                        }
+                    }
 
+                    }
+                
+            }
+
+            if (slots[i].SlotNum >= 19 && slots[i].SlotNum <= 24)
+            {
+
+                foreach (var pieces in slots[i].pieces)
+                {
+                    if (pieces.PieceType == "black")
+                    {
+                        BlackInHomeCounter++;
+                        if (WhiteInHomeCounter == 15)
+                        {
+                            Debug.Log("all black pieces are home");
+                        }
+                        else
+                        {
+                            Debug.Log("Not All black Pieces are home");
+                        }
+                    }
+
+                }
+
+            }
+        }
     }
     
 

@@ -1,7 +1,7 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Assets/Scripts/GameManager.cs" Line="229" Column="1" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="223" Column="53" />
       <File FileName="Assets/Scripts/Piece.cs" Line="25" Column="89" />
       <File FileName="Assets/Scripts/MouseClick.cs" Line="55" Column="110" />
       <File FileName="Assets/Scripts/Slots.cs" Line="21" Column="17" />
