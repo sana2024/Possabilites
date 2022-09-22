@@ -20,8 +20,9 @@ public class GameManager : MonoBehaviour
     //------------------------
     [SerializeField] private GameObject[] pieces = new GameObject[2];
     [SerializeField] private Slots[] slots = new Slots[26];
-    [SerializeField] string[] SlotColors = new string[24];
     [SerializeField] GameObject[] PieceObjects = new GameObject[24];
+
+
     [SerializeField] int WhitePiecesInHome;
     [SerializeField] int BlackPiecesInHome;
 
@@ -50,6 +51,10 @@ public class GameManager : MonoBehaviour
 
     bool BigPlayed = false;
     bool SmallPlayed = false;
+
+    bool bigOutside = false;
+    bool smallOutside = false;
+    
 
 
     //------------------------
@@ -115,7 +120,6 @@ public class GameManager : MonoBehaviour
             int pieceId = i + 1;
             PieceObjects[i].GetComponent<Piece>().name = "piece (" +  pieceId + ")";
         }
-        
 
 
 
@@ -172,18 +176,21 @@ public class GameManager : MonoBehaviour
         }
 
 
-        CheckHomePieces();
+ 
 
 
     }
 
-    public void CheckHomePieces()
+    /*
+    public void CheckHomePieces(Slots ClickedSlot)
     {
         int WhiteInHomeCounter = 0;
         int BlackInHomeCounter = 0;
 
         for(int i =0; i<24; i++)
         {
+            if(Player == "white")
+            {
             if(slots[i].SlotNum >=1 && slots[i].SlotNum <= 6)
             {
  
@@ -194,18 +201,33 @@ public class GameManager : MonoBehaviour
                             WhiteInHomeCounter ++;
                            if(WhiteInHomeCounter == 15)
                         {
-                            Debug.Log("all white pieces are home");
-                        }
+                                var BigDicePosb = MovementDirection(ClickedSlot.SlotNum, BigDice);
+                                var smallDicePosb = MovementDirection(ClickedSlot.SlotNum, SmallDice);
+
+                               if(BigDicePosb <= 0)
+                                {
+                                    bigOutside = true;
+                                }
+
+                                if (smallDicePosb <= 0)
+                                {
+                                    smallOutside = true;
+                                }
+
+                            }
                         else
                         {
-                            Debug.Log("Not All white Pieces are home");
+ 
                         }
                     }
 
                     }
                 
             }
+            }
 
+            if(Player == "black")
+            {
             if (slots[i].SlotNum >= 19 && slots[i].SlotNum <= 24)
             {
 
@@ -214,22 +236,25 @@ public class GameManager : MonoBehaviour
                     if (pieces.PieceType == "black")
                     {
                         BlackInHomeCounter++;
-                        if (WhiteInHomeCounter == 15)
+                        if (BlackInHomeCounter == 15)
                         {
                             Debug.Log("all black pieces are home");
                         }
                         else
                         {
-                            Debug.Log("Not All black Pieces are home");
+ 
                         }
                     }
 
                 }
 
             }
+            }
+
         }
     }
-    
+
+    */
 
     // reverse movement direction based on player color
     public int MovementDirection(int SlotNum, int Dice)
@@ -280,6 +305,8 @@ public class GameManager : MonoBehaviour
 
         }
 
+ 
+
     }
 
 
@@ -318,6 +345,8 @@ public class GameManager : MonoBehaviour
 
         }
 
+ 
+
     }
 
 
@@ -338,32 +367,49 @@ public class GameManager : MonoBehaviour
          // this coondition will be true if slot can be played on both small and big dice
         if (canPlayBig == true && canPlaySmall == true )
         {
-             MoveCounter++;
+
+ 
+                MoveCounter++;
+
+            
             //first move big dice
             if (BigPlayed == false)
             {
                 int bigMove = MovementDirection(GetSlot().SlotNum, BigDice);
                 var last = GetSlot().pieces.LastOrDefault();
 
-                HitMovement(slots[bigMove - 1]);
-                slots[bigMove - 1].addPiece(last);
-                GetSlot().RemovePiece();
 
-                // check if its double dice
-                if (BigDice == SmallDice)
+                if (slots[bigMove - 1].SlotColor != enemy || slots[bigMove - 1].SlotColor == enemy && slots[bigMove - 1].pieces.Count == 1)
                 {
-                    if (MoveCounter >= 4)
+
+                    HitMovement(slots[bigMove - 1]);
+                    slots[bigMove - 1].addPiece(last);
+
+
+                    GetSlot().RemovePiece();
+
+
+
+                    // check if its double dice
+                    if (BigDice == SmallDice)
+                    {
+                        if (MoveCounter >= 4)
+                        {
+                            BigPlayed = true;
+                            canPlayBig = false;
+                            canPlaySmall = false;
+                        }
+                    }
+
+
+                    else
                     {
                         BigPlayed = true;
                         canPlayBig = false;
                         canPlaySmall = false;
                     }
-                }
-                else
-                {
-                  BigPlayed = true;
-                  canPlayBig = false;
-                  canPlaySmall = false;
+
+
                 }
 
 
