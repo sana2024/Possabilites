@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
             for (int j = 0; j < startPositions[i]; j++)
             {
                 piece = Instantiate(pieces[startColors[i]], new Vector3(0, 0, 0), Quaternion.identity).GetComponent<Piece>();
-                slots[i].addPiece(piece);
+                slots[i].FirstPostion(piece);
 
             
             }
@@ -156,6 +156,7 @@ public class GameManager : MonoBehaviour
             {
                 if (GetSlot().SlotColor == Player)
                 {
+
                     Possab(GetSlot());
 
                 }

@@ -9,12 +9,15 @@ public class Piece : MonoBehaviour
  
     float temps;
     bool click = false;
+    public float smoothTime = 0.2F;
+    private Vector3 velocity = Vector3.one;
+    Vector3 target;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        target = transform.position;
     }
     
 
@@ -43,17 +46,22 @@ public class Piece : MonoBehaviour
         {
             click = false;
 
-            if ((Time.time - temps) < 0.2)
-            {
-                 
-            }
+           
         }
+
+        transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, smoothTime);
+
 
 
     }
 
     // move piece to the destination
     public void move(Vector3 newPos)
+    {
+        target = newPos;
+    }
+
+    public void startPostion(Vector3 newPos)
     {
         transform.position = newPos;
     }

@@ -59,6 +59,13 @@ public class Slots : MonoBehaviour
         pieces.Add(piece);
     }
 
+    public void FirstPostion(Piece piece)
+    {
+        double add = -(0.1 * this.howManyPieces() + 1);
+        piece.startPostion(new Vector3(transform.position.x, transform.position.y + ((pieces.Count * distance) * up), (float)add));
+        pieces.Add(piece);
+    }
+
     public int howManyPieces()
     {
         return pieces.Count;
