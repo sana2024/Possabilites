@@ -82,12 +82,15 @@ public class Piece : MonoBehaviour
     {
         LayerMask mask = LayerMask.GetMask("piece");
         RaycastHit2D hit = Physics2D.Raycast(GetMousePos(), Vector2.zero, mask);
-        Debug.Log(hit.collider.name);
-
-        if (this.name == hit.collider.name)
+       // Debug.Log(hit.collider.name);
+       if(hit.collider != null)
         {
+           if (this.name == hit.collider.name)
+           {
             this.transform.position = GetMousePos();
+           }
         }
+
     }
     
 }

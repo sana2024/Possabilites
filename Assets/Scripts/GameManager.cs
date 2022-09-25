@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour
     //------------------------
     //    Start Postions
     //------------------------
-    private int[] startPositions = { 2, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 5, 5, 0, 0, 0, 3, 0, 1, 0, 0, 0, 0, 2 };
-    private int[] startColors = { 0, -1, -1, -1, -1, 1, -1, 1, -1, -1, -1, 0, 1, -1, -1, -1, 0, -1, 0, -1, -1, -1, -1, 1 };
+    private int[] startPositions = { 2, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 5, 5, 0, 0, 0, 3, 0, 1, 0, 0, 0, 1, 2 };
+    private int[] startColors = { 0, -1, -1, -1, -1, 1, -1, 1, -1, -1, -1, 0, 1, -1, -1, -1, 0, -1, 0, -1, -1, -1, 1, 1 };
 
 
     //------------------------
@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     int MoveCounter = 0;
     Piece piece;
+    Slots ClickedSlot;
 
 
 
@@ -145,6 +146,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            ClickedSlot = GetSlot();
             temps = Time.time;
             click = true;
         }
@@ -154,12 +156,17 @@ public class GameManager : MonoBehaviour
             // get possable moves if slot pressed
             if ((Time.time - temps) > 0.2)
             {
-                if (GetSlot().SlotColor == Player)
+                if(ClickedSlot != null)
                 {
-
-                    Possab(GetSlot());
-
+                    if(ClickedSlot.pieces.Count != 0 && ClickedSlot.SlotColor == Player)
+                   {
+                      Possab(ClickedSlot);
+                   }
                 }
+
+
+
+ 
             }
 
         }
@@ -176,10 +183,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
  
-
-
     }
 
     /*

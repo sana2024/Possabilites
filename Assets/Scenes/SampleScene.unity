@@ -1313,8 +1313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e330754bf82424b6cbab12d63031823e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceValue1: 5
-  diceValue2: 5
+  diceValue1: 3
+  diceValue2: 2
   BigDice: 0
   SmallDice: 0
   pieces:
@@ -1349,31 +1349,6 @@ MonoBehaviour:
   - {fileID: 709238413}
   - {fileID: 1521287883}
   - {fileID: 628877680}
-  SlotColors:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   PieceObjects:
   - {fileID: 0}
   - {fileID: 0}
