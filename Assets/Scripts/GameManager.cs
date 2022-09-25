@@ -163,9 +163,6 @@ public class GameManager : MonoBehaviour
                       Possab(ClickedSlot);
                    }
                 }
-
-
-
  
             }
 

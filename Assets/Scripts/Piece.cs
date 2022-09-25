@@ -56,9 +56,10 @@ public class Piece : MonoBehaviour
     }
 
     // move piece to the destination
-    public void move(Vector3 newPos)
+    public void move(Vector3 newPos , Transform ParentPos)
     {
-        target = newPos;
+        target = ParentPos.parent.;
+        transform.parent = ParentPos;
     }
 
     public void startPostion(Vector3 newPos)

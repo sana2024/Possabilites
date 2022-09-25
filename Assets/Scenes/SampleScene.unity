@@ -1314,7 +1314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceValue1: 3
-  diceValue2: 2
+  diceValue2: 3
   BigDice: 0
   SmallDice: 0
   pieces:
