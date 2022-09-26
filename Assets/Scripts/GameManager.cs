@@ -384,6 +384,7 @@ public class GameManager : MonoBehaviour
                 if (slots[bigMove - 1].SlotColor != enemy || slots[bigMove - 1].SlotColor == enemy && slots[bigMove - 1].pieces.Count == 1)
                 {
 
+ 
                     HitMovement(slots[bigMove - 1]);
                     slots[bigMove - 1].addPiece(last);
 
