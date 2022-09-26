@@ -17,7 +17,7 @@ public class Piece : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = transform.position;
+        target = transform.localPosition;
     }
     
 
@@ -49,18 +49,21 @@ public class Piece : MonoBehaviour
            
         }
 
-        transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, smoothTime);
+        transform.localPosition = Vector3.SmoothDamp(transform.localPosition, target, ref velocity, smoothTime);
 
 
 
     }
 
     // move piece to the destination
-    public void move(Vector3 newPos)
+    public void move(Vector2 newPos , Transform parentTrans , Slots slot)
     {
-  
- 
-        target = newPos;
+       transform.parent = parentTrans;
+       var posY = slot.pieces.Count * 0.5f;
+
+        target = new Vector3(0, posY, 0);
+      //  this.GetComponent<SpriteRenderer>().sortingOrder = slot.pieces.Count;
+
     }
 
     public void startPostion(Vector3 newPos)

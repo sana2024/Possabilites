@@ -10,7 +10,7 @@ public class Slots : MonoBehaviour
     public string SlotColor = "";
 
     // the distance between pieces in a slot when insantiated
-    float distance = 0.6f;
+    float distance = 0.7f;
 
     //checks whatever the piece is on tiop side of board or botton side
     public int up;
@@ -55,7 +55,7 @@ public class Slots : MonoBehaviour
     public void addPiece(Piece piece)
     {
         double add = -(0.1 * this.howManyPieces() + 1);
-        piece.move(new Vector3(transform.position.x, transform.position.y + ((pieces.Count * distance) * up), (float)add));
+        piece.move(new Vector2(transform.localPosition.x, transform.localPosition.y + ((pieces.Count * distance) * up)),this.transform , this);
         pieces.Add(piece);
     }
 
@@ -64,6 +64,11 @@ public class Slots : MonoBehaviour
         double add = -(0.1 * this.howManyPieces() + 1);
         piece.startPostion(new Vector3(transform.position.x, transform.position.y + ((pieces.Count * distance) * up), (float)add));
         pieces.Add(piece);
+
+        foreach(var p in pieces)
+        {
+            p.gameObject.transform.parent = this.transform;
+        }
     }
 
     public int howManyPieces()
