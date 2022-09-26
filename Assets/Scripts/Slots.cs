@@ -54,9 +54,8 @@ public class Slots : MonoBehaviour
     // adds pieces to the slot
     public void addPiece(Piece piece)
     {
-        float PosY = (pieces.Count * distance) * up;
         double add = -(0.1 * this.howManyPieces() + 1);
-        piece.move(new Vector3(transform.position.x, PosY, (float)add), transform);
+        piece.move(new Vector3(transform.position.x, transform.position.y + ((pieces.Count * distance) * up), (float)add));
         pieces.Add(piece);
     }
 

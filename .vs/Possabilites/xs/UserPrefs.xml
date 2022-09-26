@@ -2,9 +2,9 @@
   <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="Assets/Scripts/GameManager.cs" Line="179" Column="39" />
-      <File FileName="Assets/Scripts/Piece.cs" Line="46" Column="10" />
-      <File FileName="Assets/Scripts/MouseClick.cs" Line="13" Column="1" />
-      <File FileName="Assets/Scripts/Slots.cs" Line="63" Column="42" />
+      <File FileName="Assets/Scripts/Piece.cs" Line="59" Column="36" />
+      <File FileName="Assets/Scripts/MouseClick.cs" Line="17" Column="42" />
+      <File FileName="Assets/Scripts/Slots.cs" Line="56" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,7 +13,7 @@
             <Node name="Assembly-CSharp" expanded="True">
               <Node name="Assets" expanded="True">
                 <Node name="Scripts" expanded="True">
-                  <Node name="Piece.cs" selected="True" />
+                  <Node name="MouseClick.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
