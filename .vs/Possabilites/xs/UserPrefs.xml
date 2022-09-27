@@ -1,9 +1,9 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{F65F6D18-6EAD-5A29-C096-BAE231FA643B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MouseClick.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="Assets/Scripts/GameManager.cs" Line="351" Column="23" />
       <File FileName="Assets/Scripts/Piece.cs" Line="59" Column="74" />
-      <File FileName="Assets/Scripts/MouseClick.cs" Line="42" Column="42" />
+      <File FileName="Assets/Scripts/MouseClick.cs" Line="42" Column="34" />
       <File FileName="Assets/Scripts/Slots.cs" />
       <File FileName="../Documents/GitHub/Backgammon/Assets/Scripts/NakamaScripts/NakamaLogin.cs" />
     </Files>
