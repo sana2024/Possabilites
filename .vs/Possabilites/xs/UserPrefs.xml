@@ -1,31 +1,23 @@
-﻿<Properties GitUserInfo="UsingGIT">
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{F65F6D18-6EAD-5A29-C096-BAE231FA643B}|">
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Assets/Scripts/GameManager.cs" Line="65" Column="23" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="351" Column="23" />
       <File FileName="Assets/Scripts/Piece.cs" Line="59" Column="74" />
-      <File FileName="Assets/Scripts/MouseClick.cs" />
+      <File FileName="Assets/Scripts/MouseClick.cs" Line="47" Column="1" />
       <File FileName="Assets/Scripts/Slots.cs" />
       <File FileName="../Documents/GitHub/Backgammon/Assets/Scripts/NakamaScripts/NakamaLogin.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Possabilites" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="Assets" expanded="True">
-                <Node name="Scripts" expanded="True">
-                  <Node name="GameManager.cs" selected="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
+          <Node name="Possabilites" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="67363be3-c465-41ba-af10-fb4222eee45c" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4c52755f-6e01-49df-b1ba-d83089aa8829" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

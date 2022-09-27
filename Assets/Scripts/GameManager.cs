@@ -455,6 +455,7 @@ public class GameManager : MonoBehaviour
 
         BigPlayed = false;
         SmallPlayed = false;
+        MoveCounter = 0;
     }
 
     }

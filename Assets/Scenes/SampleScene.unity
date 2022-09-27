@@ -1479,8 +1479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e330754bf82424b6cbab12d63031823e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceValue1: 2
-  diceValue2: 3
+  diceValue1: 5
+  diceValue2: 6
   BigDice: 0
   SmallDice: 0
   pieces:
@@ -1549,6 +1549,7 @@ MonoBehaviour:
   canPlaySmall: 0
   BigPlayed: 0
   SmallPlayed: 0
+  MoveCounter: 0
 --- !u!4 &557691908
 Transform:
   m_ObjectHideFlags: 0
