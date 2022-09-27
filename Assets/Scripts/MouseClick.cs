@@ -39,7 +39,7 @@ public class MouseClick : MonoBehaviour
             }
             else
             {
-                Debug.Log("nothing");
+                Debug.Log("not ui element");
             }
         }
 
