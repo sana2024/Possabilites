@@ -1,11 +1,11 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Assets/Scripts/GameManager.cs" Line="491" Column="47" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="65" Column="23" />
       <File FileName="Assets/Scripts/Piece.cs" Line="59" Column="74" />
-      <File FileName="Assets/Scripts/MouseClick.cs" Line="30" Column="57" />
-      <File FileName="Assets/Scripts/Slots.cs" Line="75" Column="6" />
-      <File FileName="../Documents/GitHub/Backgammon/Assets/Scripts/NakamaScripts/NakamaLogin.cs" Line="12" Column="41" />
+      <File FileName="Assets/Scripts/MouseClick.cs" />
+      <File FileName="Assets/Scripts/Slots.cs" />
+      <File FileName="../Documents/GitHub/Backgammon/Assets/Scripts/NakamaScripts/NakamaLogin.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

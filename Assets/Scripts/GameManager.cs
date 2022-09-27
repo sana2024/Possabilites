@@ -44,16 +44,15 @@ public class GameManager : MonoBehaviour
     //     Conditions
     //------------------------
     float temps;
-    bool click = false;
+   public  bool click = false;
 
-    bool canPlayBig = false;
-    bool canPlaySmall = false;
+   public bool canPlayBig = false;
+   public bool canPlaySmall = false;
 
-    bool BigPlayed = false;
-    bool SmallPlayed = false;
+   public bool BigPlayed = false;
+   public bool SmallPlayed = false;
 
-    bool bigOutside = false;
-    bool smallOutside = false;
+ 
     
 
 
@@ -61,7 +60,7 @@ public class GameManager : MonoBehaviour
     //     Others
     //------------------------
 
-    int MoveCounter = 0;
+  public int MoveCounter = 0;
     Piece piece;
     Slots ClickedSlot;
 
@@ -135,7 +134,15 @@ public class GameManager : MonoBehaviour
         LayerMask mask = LayerMask.GetMask("slot");
         RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero , 20.0f, mask);
 
+        if(hit.collider != null)
+        {
         return hit.collider.gameObject.GetComponent<Slots>();
+        }
+        else
+        {
+            return null;
+        }
+
     }
 
     // Update is called once per frame
@@ -171,6 +178,8 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             resetPossab();
+            canPlayBig = false;
+            canPlaySmall = false;
             click = false;
 
             if ((Time.time - temps) < 0.2)
@@ -183,80 +192,7 @@ public class GameManager : MonoBehaviour
  
     }
 
-    /*
-    public void CheckHomePieces(Slots ClickedSlot)
-    {
-        int WhiteInHomeCounter = 0;
-        int BlackInHomeCounter = 0;
-
-        for(int i =0; i<24; i++)
-        {
-            if(Player == "white")
-            {
-            if(slots[i].SlotNum >=1 && slots[i].SlotNum <= 6)
-            {
- 
-                    foreach(var pieces in slots[i].pieces)
-                    {
-                        if(pieces.PieceType == "white")
-                    {
-                            WhiteInHomeCounter ++;
-                           if(WhiteInHomeCounter == 15)
-                        {
-                                var BigDicePosb = MovementDirection(ClickedSlot.SlotNum, BigDice);
-                                var smallDicePosb = MovementDirection(ClickedSlot.SlotNum, SmallDice);
-
-                               if(BigDicePosb <= 0)
-                                {
-                                    bigOutside = true;
-                                }
-
-                                if (smallDicePosb <= 0)
-                                {
-                                    smallOutside = true;
-                                }
-
-                            }
-                        else
-                        {
- 
-                        }
-                    }
-
-                    }
-                
-            }
-            }
-
-            if(Player == "black")
-            {
-            if (slots[i].SlotNum >= 19 && slots[i].SlotNum <= 24)
-            {
-
-                foreach (var pieces in slots[i].pieces)
-                {
-                    if (pieces.PieceType == "black")
-                    {
-                        BlackInHomeCounter++;
-                        if (BlackInHomeCounter == 15)
-                        {
-                            Debug.Log("all black pieces are home");
-                        }
-                        else
-                        {
- 
-                        }
-                    }
-
-                }
-
-            }
-            }
-
-        }
-    }
-
-    */
+     
 
     // reverse movement direction based on player color
     public int MovementDirection(int SlotNum, int Dice)
@@ -277,37 +213,40 @@ public class GameManager : MonoBehaviour
     // Positions that player can move pieces to if clicked
     public void Movements(Slots ClickedSlot)
     {
-        //check if big dice or white dice is playable on clicked slot
-        var BigDicePosb = MovementDirection(ClickedSlot.SlotNum, BigDice);
-        var smallDicePosb = MovementDirection(ClickedSlot.SlotNum, SmallDice);
-
-        if (BigDicePosb - 1 >= 0)
+        if (ClickedSlot != null)
         {
 
-            Slots BigSlot = slots[BigDicePosb - 1];
-            Slots SmallSlot = slots[smallDicePosb - 1];
 
+            //check if big dice or white dice is playable on clicked slot
+            var BigDicePosb = MovementDirection(ClickedSlot.SlotNum, BigDice);
+            var smallDicePosb = MovementDirection(ClickedSlot.SlotNum, SmallDice);
 
-            //check if player can move Big dice on this slot
-            if (BigSlot.SlotColor != enemy || (BigSlot.SlotColor == enemy && BigSlot.pieces.Count == 1))
+            if (BigDicePosb - 1 >= 0)
             {
- 
-                canPlayBig = true;
+
+                Slots BigSlot = slots[BigDicePosb - 1];
+                Slots SmallSlot = slots[smallDicePosb - 1];
+
+
+                //check if player can move Big dice on this slot
+                if (BigSlot.SlotColor != enemy || (BigSlot.SlotColor == enemy && BigSlot.pieces.Count == 1))
+                {
+
+                    canPlayBig = true;
+
+                }
+
+                // check if player can move small dice on this slot
+                if (SmallSlot.SlotColor != enemy || (SmallSlot.SlotColor == enemy && SmallSlot.pieces.Count == 1))
+                {
+
+                    canPlaySmall = true;
+
+                }
+
 
             }
-
-            // check if player can move small dice on this slot
-            if (SmallSlot.SlotColor != enemy || (SmallSlot.SlotColor == enemy && SmallSlot.pieces.Count == 1))
-            {
- 
-                canPlaySmall = true;
-
-            }
-
-
         }
-
- 
 
     }
 
@@ -498,6 +437,24 @@ public class GameManager : MonoBehaviour
 
 
         }
+    }
+
+    public void RestTurn()
+    {
+        if (Player == "white")
+        {
+            Player = "black";
+            enemy = "white";
+        }
+        else {
+
+            Player = "white";
+            enemy = "black";
+        }
+
+
+        BigPlayed = false;
+        SmallPlayed = false;
     }
 
     }
