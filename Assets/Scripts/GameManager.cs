@@ -423,7 +423,7 @@ public class GameManager : MonoBehaviour
 
             destination.pieces.Remove(hittedPiece);
 
-            Debug.Log(hittedPiece.PieceType);
+ 
 
             if (hittedPiece.PieceType == "black")
             {
