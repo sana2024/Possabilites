@@ -18,6 +18,7 @@ public class Piece : MonoBehaviour
     void Start()
     {
         target = transform.localPosition;
+        Debug.Log("test");
     }
     
 
